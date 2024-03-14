@@ -9,6 +9,8 @@ include_directories(
 	${Boost_INCLUDE_DIRS}
 )
 
+#--- point ---------------------------------
+
 add_executable(
 	test_point 
 	test_point.cpp
@@ -23,6 +25,8 @@ add_test(
 	NAME object_point 
 	COMMAND test_point
 )
+
+#--- line ----------------------------------
 
 add_executable(
         test_line
@@ -39,3 +43,19 @@ add_test(
         COMMAND test_line
 )
 
+#--- polygon -------------------------------
+
+add_executable(
+        test_polygon
+        test_polygon.cpp
+)
+
+target_link_libraries(
+        test_polygon
+        ${Boost_LIBRARIES}
+)
+
+add_test(
+        NAME object_polygon
+        COMMAND test_polygon
+)
