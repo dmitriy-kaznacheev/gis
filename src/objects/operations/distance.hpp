@@ -5,6 +5,7 @@
 #include <numbers>
 
 #include "point.hpp"
+#include "line.hpp"
 
 
 namespace Objects
@@ -49,13 +50,35 @@ T distance_great_circle(const Objects::GeoPoint<T> &lhs, const Objects::GeoPoint
   };
 
   // угол между двумя точками, через гаверсинус (half the versed sine)
-  double haversinus_lat = std::pow(std::sin(delta.lat / 2.), 2);
-  double haversinus_lon = std::pow(std::sin(delta.lon / 2.), 2);
-  double alpha = haversinus_lat + 
-                 std::cos(p1.lat) * std::cos(p2.lat) * haversinus_lon;
+  T haversinus_lat = std::pow(std::sin(delta.lat / 2.), 2);
+  T haversinus_lon = std::pow(std::sin(delta.lon / 2.), 2);
+  T alpha = haversinus_lat + 
+            std::cos(p1.lat) * std::cos(p2.lat) * haversinus_lon;
 
   return EARTH_RADIUS_KM * 2. *
          std::asin(std::min(1., std::sqrt(alpha)));
+}
+
+template <typename T>
+T distance_point2line(const Objects::Point<T> &p, const Objects::Line<T> &l)
+{
+  T dx{ l.p1.x - l.p2.x };
+  T dy{ l.p1.y - l.p2.y };
+  T a{  dy };
+  T b{ -dx };
+  T c{ l.p1.y * dx - l.p1.x * dy };
+ 
+  T d{};
+  if (!a && !b) {
+    // концы отрезка совпадают
+    d = distance_euclidean(p, l.p1);
+  }
+  else {
+    d = std::abs(a * p.x + b * p.y + c) / 
+        std::sqrt(a * a + b * b);
+  }
+
+  return d;
 }
 
 }

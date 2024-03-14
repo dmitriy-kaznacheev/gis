@@ -3,13 +3,32 @@
 ## Точки
 
 ### Типы
-- Point(x, y) - прямоугольные координты
-- GeoPint(lat, lon) - географические координаты (в градусах)
+- **Point(x, y)** - прямоугольные координты
+- **GeoPint(lat, lon)** - географические координаты (в градусах)
 
 ### Операции
 - Печать объекта в ostream
 - Расчет расстояний для двух точек:
-    - distance_euclidean_sq - квадрат евклидова расстояния
-    - distance_euclidean - евклидово расстояние
-    - distance_manheton - манхэттенское расстояние 
-    - distance_great_circle - длина дуги большого круга
+    - **distance_euclidean_sq** - квадрат евклидова расстояния
+        $$d = (x_1-x_2)^2 + (y_1 - y_2)^2$$
+    - **distance_euclidean** - евклидово расстояние
+        $$d = \sqrt{(x_1-x_2)^2 + (y_1 - y_2)^2}$$
+    - **distance_manheton** - манхэттенское расстояние 
+        $$d = |x_1 - x_2| + |y_1 - y_2|$$
+    - **distance_great_circle** - длина дуги большого круга
+        $$d = 2 R \arcsin\sqrt\alpha$$
+        $$\alpha = \sin^2\frac{|\phi_1-\phi_2|}{2} + \cos\phi_1\cos\phi_2\sin^2\frac{|\lambda_1-\lambda_2|}{2}$$
+
+## Линии
+
+### Типы
+- **Line(Point1, Point2)** - линия по двум точкам **Point**
+
+### Операции
+- Расчет расстояний:
+    - **distance_point2line** - от точки до прямой
+        $$d = \frac{|ax_0 + by_0 + c|}{\sqrt{a^2 + b^2}}$$
+        $$a = (y_1 - y_2)$$
+        $$b = -(x_1 - x_2)$$
+        $$c = y_1(x_1 - x_2)-x_1(y_1 - y_2)$$
+
