@@ -12,25 +12,25 @@ namespace Objects
 {
 
 template <typename T>
-T distance_euclidean_sq(const Objects::Point<T> &lhs, const Objects::Point<T> &rhs)
+T distance_euclidean_sq(const Point<T> &lhs, const Point<T> &rhs)
 {
   return std::pow(lhs.x-rhs.x, 2) + std::pow(lhs.y-rhs.y, 2);
 }
 
 template <typename T>
-T distance_euclidean(const Objects::Point<T> &lhs, const Objects::Point<T> &rhs)
+T distance_euclidean(const Point<T> &lhs, const Point<T> &rhs)
 {
   return std::sqrt(distance_euclidean_sq(lhs, rhs));
 }
 
 template <typename T>
-T distance_manheton(const Objects::Point<T> &lhs, const Objects::Point<T> &rhs)
+T distance_manheton(const Point<T> &lhs, const Point<T> &rhs)
 {
   return std::abs(lhs.x-rhs.x) + std::abs(lhs.y-rhs.y);
 }
 
 template <typename T>
-T distance_great_circle(const Objects::GeoPoint<T> &lhs, const Objects::GeoPoint<T> &rhs)
+T distance_great_circle(const GeoPoint<T> &lhs, const GeoPoint<T> &rhs)
 {
   constexpr double EARTH_RADIUS_KM{ 6371.0 };
 
@@ -60,7 +60,7 @@ T distance_great_circle(const Objects::GeoPoint<T> &lhs, const Objects::GeoPoint
 }
 
 template <typename T>
-T distance_point2line(const Objects::Point<T> &p, const Objects::Line<T> &l)
+T distance_point2line(const Point<T> &p, const Line<T> &l)
 {
   T dx{ l.p1.x - l.p2.x };
   T dy{ l.p1.y - l.p2.y };

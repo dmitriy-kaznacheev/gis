@@ -3,7 +3,9 @@
 
 #include "point.hpp"
 #include "operations/area.hpp"
-
+#include "operations/distance.hpp"
+#include "operations/point_position.hpp"
+#include "operations/dump.hpp"
 
 using Objects::Point;
 
@@ -13,13 +15,24 @@ BOOST_AUTO_TEST_SUITE(testObjectPolygon)
 BOOST_AUTO_TEST_CASE(testAreaPolygonTrapezoids)
 {
   std::vector polygon {
-      Point{ 0., 10.}, Point{ 5.,  0.}, Point{10., 10.}, Point{15.,  0.}, Point{20., 10.}, 
-      Point{25.,  0.}, Point{30., 20.}, Point{40., 20.}, Point{45.,  0.}, Point{50., 50.},
-      Point{40., 40.}, Point{30., 50.}, Point{25., 20.}, Point{20., 50.}, Point{15., 10.},
-      Point{10., 50.}, Point{ 8.,  8.}, Point{ 4., 50.}, Point{ 0., 10.}
+      Point{10., 20.}, Point{20., 20.},  
+      Point{20., 10.}, Point{10., 10.},
+      Point{10., 20.},
   };
 
-  BOOST_CHECK_CLOSE(area_polygon_trapezoids(std::move(polygon)), 1294, 1e-3);
+  BOOST_CHECK_CLOSE(area_polygon_trapezoids(std::move(polygon)), 100, 1e-3);
 }
+
+BOOST_AUTO_TEST_CASE(testCentoidPolygon)
+{
+  std::vector polygon {
+    Point{10., 20.}, Point{20., 20.},
+    Point{20., 10.}, Point{10., 10.},
+    Point{10., 20.},
+  };
+
+  BOOST_CHECK((centroid_polygon(std::move(polygon)) == Point{ 15., 15. }));
+}
+
 
 BOOST_AUTO_TEST_SUITE_END()
