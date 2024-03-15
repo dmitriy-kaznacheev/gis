@@ -16,7 +16,7 @@ struct Line final
 
   void dump(std::ostream &os) const
   {
-    os << "Line[" << p1 << "; " << p2 << "]";
+    os << "Line{ " << p1 << " " << p2 << " }";
   }
 };
 

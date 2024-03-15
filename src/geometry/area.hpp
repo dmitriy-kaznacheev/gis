@@ -9,7 +9,7 @@ namespace gis
 {
 
 template <typename T>
-T area_polygon_trapezoids(Polygon<T> &&polygon)
+T area_polygon_trapezoids_signed(Polygon<T> &&polygon)
 {
   size_t len = polygon.size();
   if (len < 3) 
@@ -21,7 +21,14 @@ T area_polygon_trapezoids(Polygon<T> &&polygon)
                            polygon[i+1].x * polygon[i].y;
     dbl_area += dlb_trapezoid_area;
   }
-  return std::abs(dbl_area) / 2.0;
+  
+  return dbl_area / 2.0;
+}
+
+template <typename T>
+T area_polygon_trapezoids(Polygon<T> &&polygon)
+{
+  return std::abs(area_polygon_trapezoids_signed(std::move(polygon)));
 }
 
 }

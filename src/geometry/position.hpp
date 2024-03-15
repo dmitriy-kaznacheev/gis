@@ -2,12 +2,16 @@
 #define GIS_OBJECTS_OPERATIONS_POINT_POSITION
 
 #include <stdexcept>
+#include "line.hpp"
 #include "point.hpp"
 #include "polygon.hpp"
+#include "area.hpp"
 
 
 namespace gis
 {
+
+enum class Position { LEFT, RIGHT, ON };
 
 template <typename T>
 Point<T> centroid_polygon(Polygon<T> &&polygon)
@@ -29,6 +33,17 @@ Point<T> centroid_polygon(Polygon<T> &&polygon)
   centroid.x /= 3.0 * dbl_area;
   centroid.y /= 3.0 * dbl_area;
   return centroid;
+}
+
+template <typename T>
+Position point_relative_line(const Point<T> &p, const Line<T> &l)
+{
+  Polygon triangle{ p, l.p2, l.p1, p };
+  T area = area_polygon_trapezoids_signed(std::move(triangle));
+  
+  return (area < 0.) ? Position::LEFT
+                     : (area > 0.) ? Position::RIGHT
+                                   : Position::ON;
 }
 
 }

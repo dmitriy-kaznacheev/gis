@@ -9,53 +9,53 @@ include_directories(
 	${Boost_INCLUDE_DIRS}
 )
 
-#--- point ---------------------------------
+#--- geometry distance ---------------------
 
 add_executable(
-	test_point 
-	test_point.cpp
+        test_geom_distance
+        test_geom_distance.cpp
 )
 
 target_link_libraries(
-	test_point 
-	${Boost_LIBRARIES}
-)
-
-add_test(
-	NAME object_point 
-	COMMAND test_point
-)
-
-#--- line ----------------------------------
-
-add_executable(
-        test_line
-        test_line.cpp
-)
-
-target_link_libraries(
-        test_line
+        test_geom_distance
         ${Boost_LIBRARIES}
 )
 
 add_test(
-        NAME object_line
-        COMMAND test_line
+        NAME geometry_distance
+        COMMAND test_geom_distance
 )
 
-#--- polygon -------------------------------
+#--- geometry area -------------------------
 
 add_executable(
-        test_polygon
-        test_polygon.cpp
+        test_geom_area
+        test_geom_area.cpp
 )
 
 target_link_libraries(
-        test_polygon
+        test_geom_area
         ${Boost_LIBRARIES}
 )
 
 add_test(
-        NAME object_polygon
-        COMMAND test_polygon
+        NAME geometry_area
+        COMMAND test_geom_area
+)
+
+#--- geometry position ---------------------
+
+add_executable(
+        test_geom_position
+        test_geom_position.cpp
+)
+
+target_link_libraries(
+        test_geom_position
+        ${Boost_LIBRARIES}
+)
+
+add_test(
+        NAME geometry_position
+        COMMAND test_geom_position
 )
