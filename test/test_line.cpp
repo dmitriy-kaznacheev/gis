@@ -1,12 +1,12 @@
 #define BOOST_TEST_MODULE testObjectLine
 #include <boost/test/unit_test.hpp>
 
-#include "line.hpp"
-#include "operations/distance.hpp"
+#include "objects/line.hpp"
+#include "geometry/distance.hpp"
 
 
-using Objects::Point;
-using Objects::Line;
+using gis::Point;
+using gis::Line;
 
 
 BOOST_AUTO_TEST_SUITE(testObjectLine)

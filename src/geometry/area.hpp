@@ -1,16 +1,15 @@
 #ifndef GIS_OBJECTS_OPERATIONS_AREA
 #define GIS_OBJECTS_OPERATIONS_AREA
 
-#include <vector>
 #include <stdexcept>
-#include "point.hpp"
+#include "polygon.hpp"
 
 
-namespace Objects
+namespace gis
 {
 
 template <typename T>
-T area_polygon_trapezoids(std::vector<Point<T>> &&polygon)
+T area_polygon_trapezoids(Polygon<T> &&polygon)
 {
   size_t len = polygon.size();
   if (len < 3) 

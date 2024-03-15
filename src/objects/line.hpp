@@ -4,7 +4,7 @@
 #include <ostream>
 #include "point.hpp"
 
-namespace Objects
+namespace gis
 {
 
 template <typename T>

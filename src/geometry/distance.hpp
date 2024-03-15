@@ -8,7 +8,7 @@
 #include "line.hpp"
 
 
-namespace Objects
+namespace gis
 {
 
 template <typename T>

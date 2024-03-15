@@ -1,20 +1,20 @@
 #define BOOST_TEST_MODULE testObjectPolygon
 #include <boost/test/unit_test.hpp>
 
-#include "point.hpp"
-#include "operations/area.hpp"
-#include "operations/distance.hpp"
-#include "operations/point_position.hpp"
-#include "operations/dump.hpp"
+#include "objects/polygon.hpp"
+#include "geometry/area.hpp"
+#include "geometry/distance.hpp"
+#include "geometry/point_position.hpp"
 
-using Objects::Point;
+using gis::Point;
+using gis::Polygon;
 
 
 BOOST_AUTO_TEST_SUITE(testObjectPolygon)
 
 BOOST_AUTO_TEST_CASE(testAreaPolygonTrapezoids)
 {
-  std::vector polygon {
+  Polygon polygon {
       Point{10., 20.}, Point{20., 20.},  
       Point{20., 10.}, Point{10., 10.},
       Point{10., 20.},
@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(testAreaPolygonTrapezoids)
 
 BOOST_AUTO_TEST_CASE(testCentoidPolygon)
 {
-  std::vector polygon {
+  Polygon polygon {
     Point{10., 20.}, Point{20., 20.},
     Point{20., 10.}, Point{10., 10.},
     Point{10., 20.},

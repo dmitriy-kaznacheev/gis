@@ -6,7 +6,7 @@
 #include "point.hpp"
 
 
-namespace Objects
+namespace gis
 {
 
 template <typename Object>

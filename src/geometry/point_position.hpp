@@ -1,16 +1,16 @@
 #ifndef GIS_OBJECTS_OPERATIONS_POINT_POSITION
 #define GIS_OBJECTS_OPERATIONS_POINT_POSITION
 
-#include <vector>
 #include <stdexcept>
 #include "point.hpp"
+#include "polygon.hpp"
 
 
-namespace Objects
+namespace gis
 {
 
 template <typename T>
-Point<T> centroid_polygon(std::vector<Point<T>> &&polygon)
+Point<T> centroid_polygon(Polygon<T> &&polygon)
 {
   size_t len = polygon.size();
   if (len < 3) 

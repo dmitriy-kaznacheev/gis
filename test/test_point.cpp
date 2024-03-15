@@ -1,16 +1,17 @@
 #define BOOST_TEST_MODULE testObjectPoint
 #include <boost/test/unit_test.hpp>
 
-#include "point.hpp"
-#include "operations/distance.hpp"
+#include "objects/point.hpp"
+#include "geometry/distance.hpp"
+
+using gis::Point;
+using gis::GeoPoint;
 
 
 BOOST_AUTO_TEST_SUITE(testObjectPoint)
 
 BOOST_AUTO_TEST_CASE(testPointComparation)
 {
-  using Objects::Point;
-
   Point p1{ 10., 10. };
   Point p2{ 10., 11. };
 
@@ -19,8 +20,6 @@ BOOST_AUTO_TEST_CASE(testPointComparation)
 
 BOOST_AUTO_TEST_CASE(testPointDistanceEuclideanSquare)
 {
-  using Objects::Point;
-
   Point p1{ 13., 10. };
   Point p2{ 10., 13. };
 
@@ -29,8 +28,6 @@ BOOST_AUTO_TEST_CASE(testPointDistanceEuclideanSquare)
 
 BOOST_AUTO_TEST_CASE(testPointDistanceEuclidean)
 {
-  using Objects::Point;
-
   Point p1{ 13., 10. };
   Point p2{ 10., 13. };
 
@@ -39,8 +36,6 @@ BOOST_AUTO_TEST_CASE(testPointDistanceEuclidean)
 
 BOOST_AUTO_TEST_CASE(testPointDistanceManheton)
 {
-  using Objects::Point;
-
   Point p1{ 13., 10. };
   Point p2{ 10., 13. };
 
@@ -49,8 +44,6 @@ BOOST_AUTO_TEST_CASE(testPointDistanceManheton)
 
 BOOST_AUTO_TEST_CASE(testPointDistanceGreatCircle)
 {
-  using Objects::GeoPoint;
-
   GeoPoint p1{ 55.74, 37.72 }; // Москва
   GeoPoint p2{ 57.16, 65.15 }; // Тюмень
 

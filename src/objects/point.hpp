@@ -4,7 +4,7 @@
 #include <ostream>
 
 
-namespace Objects
+namespace gis
 {
 
 template <typename T>
