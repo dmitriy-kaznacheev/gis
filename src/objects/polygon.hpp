@@ -8,6 +8,7 @@
 namespace gis
 {
 
+// TODO инкапсулировать инварианты: сортированость узлов и замкнутость
 template <typename T>
 using Polygon = std::vector<Point<T>>;
 
